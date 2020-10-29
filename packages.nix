@@ -8,7 +8,7 @@ let
       cachix = mkCache "https://cachix.cachix.org" "cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM=";
       nix-tools = mkCache "https://nix-tools.cachix.org" "nix-tools.cachix.org-1:ebBEBZLogLxcCvipq2MTvuHlP7ZRdkazFSQsbs0Px1A=";
       nix-community = mkCache "https://nix-community.cachix.org" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=";
-    in [ nixos cachix nix-community nix-ools ];
+    in [ nixos cachix nix-community nix-tools ];
 in {
   nix.useSandbox = true;
   nix.sandboxPaths = [] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
@@ -26,4 +26,4 @@ in {
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreeRedistributable = true;
-}t
+}
