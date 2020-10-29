@@ -3,18 +3,18 @@
 {
   imports = [
     ./defaults.nix
+    ./direnv.nix
+    ./packages.nix
+    ./vim.nix
     ./wm.nix
   ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    config.programs.vim.package
     skhd
-    ctags
     curl
     darwin-zsh-completions
-    direnv
     entr
     fzf
     git
@@ -39,6 +39,8 @@
     log-lines = 128
   '';
 
+  time.timeZone = "America/Toronto";
+
   programs.nix-index.enable = true;
 
   programs.tmux.enable = true;
@@ -46,55 +48,6 @@
   programs.tmux.enableMouse = true;
   programs.tmux.enableFzf = true;
   programs.tmux.enableVim = true;
-
-  programs.vim.package = pkgs.neovim.override {
-    configure = {
-      packages.darwin.start = with pkgs.vimPlugins;
-        let
-          vim-textobj-entire = pkgs.vimUtils.buildVimPluginFrom2Nix {
-            name = "vim-textobj-entire";
-            src = pkgs.fetchFromGitHub {
-              owner = "kana";
-              repo = "vim-textobj-entire";
-              rev = "64a856c9dff3425ed8a863b9ec0a21dbaee6fb3a";
-              sha256 = "0kv0s85wbcxn9hrvml4hdzbpf49b1wwr3nk6gsz3p5rvfs6fbvmm";
-            };
-          };
-          vim-textobj-line = pkgs.vimUtils.buildVimPluginFrom2Nix {
-            name = "vim-textobj-line";
-            src = pkgs.fetchFromGitHub {
-              owner = "kana";
-              repo = "vim-textobj-line";
-              rev = "0a78169a33c7ea7718b9fa0fad63c11c04727291";
-              sha256 = "0mppgcmb83wpvn33vadk0wq6w6pg9cq37818d1alk6ka0fdj7ack";
-            };
-          };
-        in
-          [
-            ReplaceWithRegister
-            ale
-            deoplete-nvim
-            fzfWrapper
-            polyglot
-            targets-vim
-            ultisnips
-            vim-abolish
-            vim-airline
-            vim-commentary
-            vim-exchange
-            vim-gutentags
-            vim-indent-object
-            vim-repeat
-            vim-sensible
-            vim-sort-motion
-            vim-surround
-            vim-textobj-entire
-            vim-textobj-line
-            vim-textobj-user
-            vim-unimpaired
-          ];
-    };
-  };
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.bash.enableCompletion = true;
