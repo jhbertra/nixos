@@ -4,6 +4,7 @@
   imports = [
     ./defaults.nix
     ./direnv.nix
+    ./git.nix
     ./packages.nix
     ./shells.nix
     ./vim.nix
@@ -16,7 +17,6 @@
     _1password
     curl
     fzf
-    git
     htop
     jq
     skhd
