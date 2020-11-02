@@ -62,7 +62,7 @@ in {
     # increase region
     ${modMask} - ${keycodes.LeftBracket}      : ${prefix} window --resize left:-20:0
     ${modMask} - ${keycodes.RightBracket}     : ${prefix} window --resize right:-20:0
-    
+
     # spaces ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
     # switch 
     ${modMask} + alt - j                      : ${prevOrLast "space"}
@@ -82,4 +82,4 @@ in {
     # reset  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
     ${modMask} - `                            : pkill yabai; pkill skhd; osascript -e 'display notification "wm restarted"'
   '';
-} 
+}
