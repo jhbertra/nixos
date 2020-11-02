@@ -44,7 +44,6 @@ in {
   services.skhd.skhdConfig = let
     modMask = "cmd";
     moveMask = "ctrl + cmd";
-    myBrowser = "open /Applications/Firefox\ Developer\ Edition.app";
     noop = "/dev/null";
     prefix = "${pkgs.yabai}/bin/yabai -m";
     fstOrSnd = {fst, snd}: domain: "${prefix} ${domain} --focus ${fst} || ${prefix} ${domain} --focus ${snd}";
@@ -77,9 +76,7 @@ in {
     # send window
     ${moveMask} - right                       : ${prefix} window --display prev
     ${moveMask} - left                        : ${prefix} window --display next
-    # apps  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-    ${modMask} - b                            : ${myBrowser}
     # reset  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-    ${modMask} - `                            : pkill yabai; pkill skhd; osascript -e 'display notification "wm restarted"'
+    ${moveMask} - q                            : pkill yabai; pkill skhd; osascript -e 'display notification "wm restarted"'
   '';
 }

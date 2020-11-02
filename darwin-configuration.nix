@@ -13,12 +13,13 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    skhd
+    _1password
     curl
     fzf
     git
     htop
     jq
+    skhd
   ];
 
   # Use a custom configuration.nix location.
@@ -38,9 +39,6 @@
   services.nix-daemon.enable = true;
   services.activate-system.enable = true;
   programs.nix-index.enable = true;
-
-  environment.shellAliases.o= "open";
-  environment.shellAliases.drbs= "darwin-rebuild switch";
 
   users.nix.configureBuildUsers = true;
   users.nix.nrBuildUsers = 32;

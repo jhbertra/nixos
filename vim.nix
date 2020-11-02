@@ -34,8 +34,8 @@
             ReplaceWithRegister
             ale
             deoplete-nvim
-            fzfWrapper
             fzf-vim
+            fzfWrapper
             polyglot
             targets-vim
             ultisnips
@@ -44,6 +44,7 @@
             vim-commentary
             vim-exchange
             vim-indent-object
+            vim-projectionist
             vim-repeat
             vim-sensible
             vim-sort-motion
@@ -54,20 +55,6 @@
             vim-unimpaired
           ];
       customRC = ''
-        " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        " Deoplete
-        " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-        inoremap <expr><C-g> deoplete#undo_completion()
-        inoremap <expr><C-l> deoplete#refresh()
-        inoremap <silent><expr><C-Tab> deoplete#mappings#manual_complete()
-        inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-        autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-        let g:deoplete#enable_at_startup = 1
-        nnoremap <expr><C-d> deoplete#custom#option('sources', { '_': ['ale'] })
-
         " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         " ALE
         " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -224,6 +211,20 @@
 
         " leader is a key that allows you to have your own "namespace" of keybindings.
         map <space> <Leader>
+
+        " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        " Deoplete
+        " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        inoremap <expr><C-g> deoplete#undo_completion()
+        inoremap <expr><C-l> deoplete#refresh()
+        inoremap <silent><expr><C-Tab> deoplete#mappings#manual_complete()
+        inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+        autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+        let g:deoplete#enable_at_startup = 1
+        nnoremap <expr><C-d> deoplete#custom#option('sources', { '_': ['ale'] })
       '';
     };
   };
