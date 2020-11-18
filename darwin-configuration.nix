@@ -3,7 +3,7 @@
 {
   imports = [
     ./defaults.nix
-    ./direnv.nix
+    # ./direnv.nix
     ./git.nix
     ./packages.nix
     ./shells.nix
